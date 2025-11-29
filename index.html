@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>成为“竞赛战略家”——我的工科竞赛心法分享</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <!-- 使用 white 主题作为基底 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/white.min.css" id="theme">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* 1. 全局字体设置 */
+        .reveal {
+            font-family: 'Noto Sans SC', sans-serif !important;
+            color: #1e293b !important; /* Slate 800 */
+        }
+
+        /* 2. 覆盖 Reveal.js 默认样式 */
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+            font-family: 'Noto Sans SC', sans-serif !important;
+            text-transform: none !important;
+            color: #0f172a !important; /* Slate 900 */
+        }
+        
+        /* 3. 配色系统 (针对白底优化) */
+        :root {
+            --accent-color: #0284c7; /* Sky 600 - 深一点的蓝，保证白底清晰 */
+            --secondary-color: #7c3aed; /* Violet 600 */
+            --bg-page: #f8fafc; /* Slate 50 */
+        }
+
+        .text-accent { color: var(--accent-color) !important; }
+        .text-secondary { color: var(--secondary-color) !important; }
+        .bg-accent { background-color: var(--accent-color) !important; }
+        
+        /* 4. 轻量化悬浮卡片 (Light Card) */
+        .light-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0; /* Slate 200 */
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            height: 100%;
+            transition: transform 0.2s;
+        }
+        .light-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+        }
+
+        /* 5. 列表样式优化 */
+        .reveal ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .reveal ul li {
+            margin-bottom: 0.8em;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.5;
+            color: #334155; /* Slate 700 */
+        }
+        .reveal ul li::before {
+            content: "\f054"; /* fontawesome chevron-right */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--accent-color);
+            margin-right: 1rem;
+            margin-top: 0.3rem;
+            font-size: 0.8em;
+            flex-shrink: 0;
+        }
+
+        /* 6. 图片容器样式 */
+        .img-container {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* 柔和阴影 */
+            background: #fff;
+        }
+        .img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 7. 进度条与控件颜色 */
+        .reveal .progress span { background-color: var(--accent-color) !important; }
+        .reveal .controls { color: var(--accent-color) !important; }
+    </style>
+</head>
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+        <!-- Slide 1: 封面 -->
+        <!-- 使用极淡的蓝色渐变背景，清新大气 -->
+        <section data-background-gradient="linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)">
+            <div class="flex flex-col items-center justify-center h-full">
+                <div class="mb-6">
+                    <!-- 图标颜色加深 -->
+                    <i class="fas fa-chess-knight text-8xl text-accent"></i>
+                </div>
+                <h1 class="text-6xl font-black mb-4 tracking-tight text-slate-900">成为“竞赛战略家”</h1>
+                <h2 class="text-3xl text-slate-500 font-light mb-8">我的工科竞赛心法分享</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-sky-500 to-violet-500 mb-8 rounded"></div>
+                
+                <div class="light-card text-left inline-block max-w-2xl py-8 bg-white/80 backdrop-blur-sm">
+                    <p class="text-2xl mb-4"><i class="fas fa-user-circle mr-3 text-accent"></i> 分享人：<span class="font-bold text-slate-900">李昊霖</span></p>
+                    <hr class="border-slate-200 mb-4">
+                    <div class="text-base text-slate-600 grid grid-cols-1 gap-2">
+                        <div class="flex items-center"><i class="fas fa-trophy text-yellow-500 w-8 text-center mr-2"></i> 挑战杯全国一等奖</div>
+                        <div class="flex items-center"><i class="fas fa-plane text-blue-500 w-8 text-center mr-2"></i> CADC全国冠军</div>
+                        <div class="flex items-center"><i class="fas fa-robot text-red-500 w-8 text-center mr-2"></i> Robomaster全国二等奖</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2: 目录 -->
+        <section>
+            <h2 class="text-accent mb-12">分享议程</h2>
+            <div class="grid grid-cols-2 gap-8 text-left h-96">
+                <div class="light-card flex flex-col justify-center hover:bg-sky-50 transition-colors">
+                    <h4 class="text-2xl font-bold mb-2 text-slate-800">01 价值驱动</h4>
+                    <p class="text-base text-slate-500">为什么需要参加竞赛？</p>
+                </div>
+                <div class="light-card flex flex-col justify-center hover:bg-sky-50 transition-colors">
+                    <h4 class="text-2xl font-bold mb-2 text-slate-800">02 战场选择</h4>
+                    <p class="text-base text-slate-500">竞赛分类地图与选择策略</p>
+                </div>
+                <div class="light-card flex flex-col justify-center hover:bg-sky-50 transition-colors">
+                    <h4 class="text-2xl font-bold mb-2 text-slate-800">03 实战心法</h4>
+                    <p class="text-base text-slate-500">挑战杯 / RM / CADC 案例拆解</p>
+                </div>
+                <div class="light-card flex flex-col justify-center hover:bg-sky-50 transition-colors">
+                    <h4 class="text-2xl font-bold mb-2 text-slate-800">04 持续成长</h4>
+                    <p class="text-base text-slate-500">学业平衡与Q&A</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Part 1 Title (深色过渡页，保留冲击力) -->
+        <section data-background-color="#0284c7">
+            <div class="flex flex-col items-center justify-center h-full text-white">
+                <h1 class="text-white text-8xl font-black mb-4 opacity-30">Part 1</h1>
+                <h3 class="text-5xl text-white font-bold">为什么需要参加竞赛？</h3>
+                <p class="text-xl text-sky-100 mt-6 tracking-widest uppercase border-t border-sky-400 pt-4">—— 超越“加分”的目的 ——</p>
+            </div>
+        </section>
+
+        <!-- Slide 4: 核心价值 -->
+        <section>
+            <h3 class="mb-8 text-slate-800">竞赛的三重核心价值</h3>
+            <div class="grid grid-cols-3 gap-6">
+                <div class="light-card text-center border-t-4 border-pink-500">
+                    <div class="text-6xl mb-6 text-pink-500"><i class="fas fa-heart"></i></div>
+                    <h4 class="text-xl font-bold mb-4 text-slate-800">兴趣驱动</h4>
+                    <p class="text-sm text-slate-600 text-left leading-relaxed">将理论变为实物，获得巨大成就感。这是持续投入的<strong class="text-pink-600">内驱力</strong>。</p>
+                </div>
+                <div class="light-card text-center border-t-4 border-purple-500">
+                    <div class="text-6xl mb-6 text-purple-500"><i class="fas fa-graduation-cap"></i></div>
+                    <h4 class="text-xl font-bold mb-4 text-slate-800">升学砝码</h4>
+                    <p class="text-sm text-slate-600 text-left leading-relaxed">直观展示创新与协作能力，是保研考研复试中的<strong class="text-purple-600">硬通货</strong>。</p>
+                </div>
+                <div class="light-card text-center border-t-4 border-cyan-500">
+                    <div class="text-6xl mb-6 text-cyan-500"><i class="fas fa-briefcase"></i></div>
+                    <h4 class="text-xl font-bold mb-4 text-slate-800">就业优势</h4>
+                    <p class="text-sm text-slate-600 text-left leading-relaxed">名企研发岗极度青睐，竞赛经历等同于<strong class="text-cyan-600">“预上岗”</strong>培训。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: 水平定义 -->
+        <section>
+            <h3 class="mb-6 text-slate-800">我们要谈论的是什么水平？</h3>
+            <div class="flex gap-8 items-center h-[450px]">
+                <div class="w-1/2 h-full img-container">
+                    <!-- 使用真实图片或占位 -->
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/14756964852670403978" alt="奖杯与证书" class="img-cover">
+                </div>
+                <div class="w-1/2 flex flex-col justify-center text-left">
+                    <div class="light-card bg-red-50 border-red-200">
+                        <i class="fas fa-quote-left text-4xl text-red-500 mb-4 opacity-50"></i>
+                        <p class="text-2xl leading-normal text-slate-700 font-serif">
+                            本分享聚焦于<br>
+                            <span class="text-red-600 font-bold text-4xl">高水平</span><br>
+                            <span class="text-red-600 font-bold text-4xl">高含金量</span><br>
+                            <span class="text-red-600 font-bold text-4xl">高投入</span><br>
+                            的竞赛，它们的回报也最为丰厚。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Part 2 Title (紫色过渡页) -->
+        <section data-background-color="#7c3aed">
+            <div class="flex flex-col items-center justify-center h-full text-white">
+                <h1 class="text-white text-8xl font-black mb-4 opacity-30">Part 2</h1>
+                <h3 class="text-5xl text-white font-bold">竞赛分类地图</h3>
+                <p class="text-xl text-purple-200 mt-6 tracking-widest uppercase border-t border-purple-400 pt-4">—— 选择比努力更重要 ——</p>
+            </div>
+        </section>
+
+        <!-- Slide 7: 三国鼎立 -->
+        <section>
+            <h3 class="mb-10 text-slate-800">工科竞赛的“三国鼎立”</h3>
+            <div class="grid grid-cols-3 gap-8">
+                <div class="light-card pt-12 relative hover:-translate-y-2 transition-transform">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded-full border border-yellow-200 shadow-md">
+                        <i class="fas fa-lightbulb text-3xl text-yellow-500"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mt-2 mb-2 text-slate-800">创新创业类</h4>
+                    <p class="text-sm text-slate-500">项目商业价值</p>
+                </div>
+                
+                <div class="light-card pt-12 relative hover:-translate-y-2 transition-transform">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded-full border border-blue-200 shadow-md">
+                        <i class="fas fa-microchip text-3xl text-blue-500"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mt-2 mb-2 text-slate-800">术业专精类</h4>
+                    <p class="text-sm text-slate-500">深度技术较量</p>
+                </div>
+
+                <div class="light-card pt-12 relative hover:-translate-y-2 transition-transform">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded-full border border-red-200 shadow-md">
+                        <i class="fas fa-robot text-3xl text-red-500"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mt-2 mb-2 text-slate-800">机器人类/专项</h4>
+                    <p class="text-sm text-slate-500">系统工程实践</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8: 创新创业类 -->
+        <section class="text-left">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-lightbulb text-4xl text-yellow-600"></i>
+                </div>
+                <h3 class="text-slate-800 m-0 font-bold">1. 创新创业类</h3>
+            </div>
+            <p class="text-xl text-slate-500 mb-8 ml-20">—— 综合能力的试金石</p>
+            
+            <div class="light-card ml-20 bg-yellow-50 border-yellow-100">
+                <ul class="text-2xl space-y-6">
+                    <li>
+                        <strong class="w-32 flex-shrink-0 text-slate-800">特点：</strong>
+                        <span>注重商业价值、创新性、社会意义。偏向于做一个“完整的项目”。</span>
+                    </li>
+                    <li>
+                        <strong class="w-32 flex-shrink-0 text-slate-800">赛事：</strong>
+                        <div class="flex gap-2">
+                            <span class="bg-white border border-yellow-200 px-3 py-1 rounded text-sm text-slate-700 shadow-sm">挑战杯</span>
+                            <span class="bg-white border border-yellow-200 px-3 py-1 rounded text-sm text-slate-700 shadow-sm">互联网+</span>
+                            <span class="bg-white border border-yellow-200 px-3 py-1 rounded text-sm text-slate-700 shadow-sm">国创</span>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="w-32 flex-shrink-0 text-slate-800">人群：</strong>
+                        <span>想法多、擅长策划/写作/演讲、有领导力 (PM属性)。</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 9: 术业专精类 -->
+        <section class="text-left">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-microchip text-4xl text-blue-600"></i>
+                </div>
+                <h3 class="text-slate-800 m-0 font-bold">2. 术业专精类</h3>
+            </div>
+            <p class="text-xl text-slate-500 mb-8 ml-20">—— 技术深度的较量</p>
+            
+            <div class="light-card ml-20 bg-blue-50 border-blue-100">
+                <ul class="text-2xl space-y-6">
+                    <li>
+                        <strong class="w-32 flex-shrink-0 text-slate-800">特点：</strong>
+                        <span>特定技术领域深度比拼，规则明确，结果量化。解决一个“具体技术问题”。</span>
+                    </li>
+                    <li>
+                        <strong class="w-32 flex-shrink-0 text-slate-800">赛事：</strong>
+                        <div class="flex gap-2">
+                            <span class="bg-white border border-blue-200 px-3 py-1 rounded text-sm text-slate-700 shadow-sm">电子设计大赛</span>
+                            <span class="bg-white border border-blue-200 px-3 py-1 rounded text-sm text-slate-700 shadow-sm">ACM-ICPC</span>
+                            <span class="bg-white border border-blue-200 px-3 py-1 rounded text-sm text-slate-700 shadow-sm">数学建模</span>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="w-32 flex-shrink-0 text-slate-800">人群：</strong>
+                        <span>技术扎实、喜欢钻研、能承受高压 (Geek属性)。</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 10: 机器人类 -->
+        <section class="text-left">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-robot text-4xl text-red-600"></i>
+                </div>
+                <h3 class="text-slate-800 m-0 font-bold">3. 机器人类/专项</h3>
+            </div>
+            <p class="text-xl text-slate-500 mb-8 ml-20">—— 系统工程的实践</p>
+            
+            <div class="light-card ml-20 bg-red-50 border-red-100">
+                <ul class="text-2xl space-y-6">
+                    <li>
+                        <strong class="w-32 flex-shrink-0 text-slate-800">特点：</strong>
+                        <span>多学科交叉，强对抗性，考验系统工程能力和团队协作。</span>
+                    </li>
+                    <li>
+                        <strong class="w-32 flex-shrink-0 text-slate-800">赛事：</strong>
+                        <div class="flex gap-2">
+                            <span class="bg-white border border-red-200 px-3 py-1 rounded text-sm text-slate-700 shadow-sm">Robomaster</span>
+                            <span class="bg-white border border-red-200 px-3 py-1 rounded text-sm text-slate-700 shadow-sm">Robocon</span>
+                            <span class="bg-white border border-red-200 px-3 py-1 rounded text-sm text-slate-700 shadow-sm">CADC</span>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="w-32 flex-shrink-0 text-slate-800">人群：</strong>
+                        <span>动手能力强、有一技之长、热爱团队作战 (Maker属性)。</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 11: Part 3 Title (绿色过渡页) -->
+        <section data-background-color="#059669">
+            <div class="flex flex-col items-center justify-center h-full text-white">
+                <h1 class="text-white text-8xl font-black mb-4 opacity-30">Part 3</h1>
+                <h3 class="text-5xl text-white font-bold">实战经验与心法</h3>
+                <p class="text-xl text-emerald-100 mt-6 tracking-widest uppercase border-t border-emerald-400 pt-4">—— 从“知道”到“做到” ——</p>
+            </div>
+        </section>
+
+        <!-- Slide 12: 挑战杯 (Case 1) -->
+        <section>
+            <div class="flex items-center gap-4 mb-4">
+                <span class="bg-yellow-500 text-white px-3 py-1 text-sm rounded font-bold shadow-sm">CASE 01</span>
+                <h3 class="m-0 text-slate-800">挑战杯：打造冠军级项目</h3>
+            </div>
+            
+            <div class="light-card mb-6 py-3 px-6 bg-yellow-50 border-yellow-200">
+                <h4 class="text-yellow-700 text-xl m-0"><i class="fas fa-star mr-2"></i> 核心心法：立意要高，切口要小，展示要亮</h4>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6 text-left text-base">
+                <div class="p-5 border border-slate-200 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                    <strong class="text-xl block mb-3 text-slate-900"><i class="fas fa-map-signs text-accent mr-2"></i>立项</strong>
+                    <p class="text-slate-600 leading-relaxed">从国家战略（如双碳、乡村振兴）寻找切入点。不要闭门造车，需解决真实社会痛点。</p>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                    <strong class="text-xl block mb-3 text-slate-900"><i class="fas fa-file-alt text-accent mr-2"></i>材料</strong>
+                    <p class="text-slate-600 leading-relaxed">技术报告重深度，商业计划书重逻辑。PPT要图文并茂，让外行也能看懂内行门道。</p>
+                </div>
+                <div class="p-5 border border-slate-200 rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                    <strong class="text-xl block mb-3 text-slate-900"><i class="fas fa-user-tie text-accent mr-2"></i>负责人</strong>
+                    <p class="text-slate-600 leading-relaxed">你是CEO。协调团队矛盾、把控时间节点比自己写代码更重要。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 13: Robomaster (Case 2) -->
+        <section>
+            <div class="flex items-center gap-4 mb-4">
+                <span class="bg-red-500 text-white px-3 py-1 text-sm rounded font-bold shadow-sm">CASE 02</span>
+                <h3 class="m-0 text-slate-800">Robomaster：团队系统工程</h3>
+            </div>
+
+            <div class="flex gap-8 h-[450px]">
+                <div class="w-1/2 flex flex-col justify-between">
+                     <div class="light-card mb-4 py-4 bg-red-50 border-red-200">
+                        <h4 class="text-red-700 text-lg m-0"><i class="fas fa-shield-alt mr-2"></i> 心法：是“团体体育项目”</h4>
+                    </div>
+                    <ul class="text-left text-xl space-y-6 flex-grow light-card p-6 border-l-4 border-l-red-400">
+                        <li>
+                            <div class="flex flex-col">
+                                <strong class="text-slate-900 mb-1">技术维度</strong>
+                                <span class="text-sm text-slate-500">机械/电控/算法的闭环迭代速度决定上限。</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex flex-col">
+                                <strong class="text-slate-900 mb-1">战术维度</strong>
+                                <span class="text-sm text-slate-500">像教练一样研究规则。胜利往往来自于对规则的极致利用。</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex flex-col">
+                                <strong class="text-slate-900 mb-1">团队维度</strong>
+                                <span class="text-sm text-slate-500">资金流、备件管理和规范文档是强队的护城河。</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-1/2 h-full img-container">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/3625599168689436087" alt="Robomaster 机器人" class="img-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 14: CADC (Case 3) -->
+        <section>
+            <div class="flex items-center gap-4 mb-4">
+                <span class="bg-blue-500 text-white px-3 py-1 text-sm rounded font-bold shadow-sm">CASE 03</span>
+                <h3 class="m-0 text-slate-800">CADC：垂直领域的极致</h3>
+            </div>
+
+            <div class="flex gap-8 h-[450px]">
+                <div class="w-1/2 h-full img-container">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/9438274746036583123" alt="航空模型竞赛" class="img-cover">
+                </div>
+                <div class="w-1/2 flex flex-col justify-between">
+                    <div class="light-card mb-4 py-4 bg-blue-50 border-blue-200">
+                        <h4 class="text-blue-700 text-lg m-0"><i class="fas fa-fighter-jet mr-2"></i> 心法：规则内优化到极致</h4>
+                    </div>
+                    
+                    <div class="light-card flex-grow text-left p-6 space-y-6 border-l-4 border-l-blue-400">
+                        <div>
+                            <h5 class="text-slate-900 border-b border-slate-200 pb-2 mb-2 font-bold">经验分享</h5>
+                            <p class="text-base text-slate-600">针对飞行器载重比、气动效率进行千百次模拟与试飞。每一个克重都要计较，追求极致的可靠性。</p>
+                        </div>
+                        <div>
+                            <h5 class="text-slate-900 border-b border-slate-200 pb-2 mb-2 font-bold">对比分析</h5>
+                            <p class="text-base text-slate-600">Robomaster 是容错率稍高的多兵种对抗；CADC 是一架飞机定生死，必须万无一失。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 15: 团队组建 -->
+        <section>
+            <h3 class="mb-8 text-slate-800">如何组建你的“冠军团队”？</h3>
+            <div class="flex gap-8 h-[400px]">
+                <div class="w-1/3 h-full img-container shadow-lg">
+                     <img src="http://googleusercontent.com/image_collection/image_retrieval/12173821258230058298" alt="团队协作" class="img-cover">
+                </div>
+                <div class="w-2/3 grid grid-rows-3 gap-4">
+                    <div class="light-card flex items-center px-6">
+                        <div class="bg-green-100 p-3 rounded-full mr-4"><i class="fas fa-search text-green-600 text-2xl"></i></div>
+                        <div class="text-left">
+                            <strong class="text-xl text-slate-900 block">寻找“对的人”</strong>
+                            <span class="text-sm text-slate-500">责任心 > 能力。技术可以练，但靠谱和自驱力是底线。</span>
+                        </div>
+                    </div>
+                    <div class="light-card flex items-center px-6">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4"><i class="fas fa-puzzle-piece text-blue-600 text-2xl"></i></div>
+                        <div class="text-left">
+                            <strong class="text-xl text-slate-900 block">能力模型互补</strong>
+                            <span class="text-sm text-slate-500">明确角色：硬件、软件、机械、美工、演讲。</span>
+                        </div>
+                    </div>
+                    <div class="light-card flex items-center px-6">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4"><i class="fas fa-fire text-purple-600 text-2xl"></i></div>
+                        <div class="text-left">
+                            <strong class="text-xl text-slate-900 block">团队熔炼</strong>
+                            <span class="text-sm text-slate-500">通过日常学习和小项目磨合，建立信任。无兄弟，不竞赛。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 16: 备赛流程 -->
+        <section>
+            <h3 class="mb-10 text-slate-800">通用备赛流程与避坑</h3>
+            
+            <!-- 时间轴 (亮色版) -->
+            <div class="flex w-full mb-12 shadow-sm">
+                <div class="flex-1 bg-white p-4 rounded-l-lg border border-r-0 border-slate-200 relative">
+                    <div class="text-slate-900 font-bold mb-1">前期</div>
+                    <div class="text-sm text-slate-500">知识储备 / 组队</div>
+                    <i class="fas fa-circle absolute -bottom-8 left-1/2 -translate-x-1/2 text-slate-300 text-xs"></i>
+                </div>
+                <div class="flex-1 bg-sky-600 p-4 border border-sky-600 relative">
+                    <div class="text-white font-bold mb-1">中期</div>
+                    <div class="text-sm text-sky-100">高强度开发 / 迭代</div>
+                    <i class="fas fa-circle absolute -bottom-8 left-1/2 -translate-x-1/2 text-sky-600 text-xs"></i>
+                </div>
+                <div class="flex-1 bg-white p-4 rounded-r-lg border border-l-0 border-slate-200 relative">
+                    <div class="text-slate-900 font-bold mb-1">后期</div>
+                    <div class="text-sm text-slate-500">文档 / 答辩 / 复盘</div>
+                    <i class="fas fa-circle absolute -bottom-8 left-1/2 -translate-x-1/2 text-slate-300 text-xs"></i>
+                </div>
+            </div>
+
+            <!-- 避坑指南 -->
+            <div class="light-card text-left bg-red-50 border-red-200">
+                <h4 class="text-red-700 mb-4 px-2 text-xl font-bold"><i class="fas fa-exclamation-triangle mr-2"></i> 常见大坑</h4>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex items-center bg-white p-3 rounded border border-red-100">
+                        <i class="fas fa-times text-red-500 mr-3 w-5 text-center"></i>
+                        <span class="text-sm text-slate-600">盲目选题，开局即地狱难度</span>
+                    </div>
+                    <div class="flex items-center bg-white p-3 rounded border border-red-100">
+                        <i class="fas fa-times text-red-500 mr-3 w-5 text-center"></i>
+                        <span class="text-sm text-slate-600">团队沟通不畅，软硬件各自为战</span>
+                    </div>
+                    <div class="flex items-center bg-white p-3 rounded border border-red-100">
+                        <i class="fas fa-times text-red-500 mr-3 w-5 text-center"></i>
+                        <span class="text-sm text-slate-600">前期摸鱼，后期通宵 (大忌)</span>
+                    </div>
+                    <div class="flex items-center bg-white p-3 rounded border border-red-100">
+                        <i class="fas fa-times text-red-500 mr-3 w-5 text-center"></i>
+                        <span class="text-sm text-slate-600">忽视展示，讲得不如做得好</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 17: Part 4 Title (深灰过渡页) -->
+        <section data-background-color="#334155">
+            <div class="flex flex-col items-center justify-center h-full text-white">
+                <h1 class="text-white text-8xl font-black mb-4 opacity-30">Part 4</h1>
+                <h3 class="text-5xl text-white font-bold">竞赛与生活的平衡</h3>
+                <p class="text-xl text-slate-300 mt-6 tracking-widest uppercase border-t border-slate-500 pt-4">—— 一场马拉松而非百米冲刺 ——</p>
+            </div>
+        </section>
+
+        <!-- Slide 18: 时间管理 -->
+        <section>
+            <h3 class="mb-10 text-slate-800">时间管理：学业与竞赛并非对立</h3>
+            <div class="flex gap-12 items-center h-[400px]">
+                <div class="w-3/5 text-left space-y-8">
+                    <div class="light-card border-l-4 border-l-sky-500 p-6">
+                        <h4 class="text-sky-700 text-xl font-bold mb-2">策略：“一鱼多吃”</h4>
+                        <p class="text-slate-600 text-lg">将竞赛项目直接转化为课程设计、大作业甚至毕业设计。让一份时间产出两份价值。</p>
+                    </div>
+                    
+                    <div class="light-card border-l-4 border-l-purple-500 p-6">
+                        <h4 class="text-purple-700 text-xl font-bold mb-2">方法：利用整块时间</h4>
+                        <p class="text-slate-600 text-lg">制定清晰的甘特图。寒暑假是弯道超车的最佳时期，平时则利用碎片时间思考。</p>
+                    </div>
+                </div>
+                <div class="w-2/5 flex justify-center">
+                    <i class="fas fa-hourglass-half text-[200px] text-slate-200"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 19: 心态管理 -->
+        <section>
+            <h3 class="mb-8 text-slate-800">心态管理：如何面对挫折？</h3>
+            
+            <div class="relative bg-white p-8 rounded-2xl border border-slate-200 shadow-md mb-8">
+                <i class="fas fa-quote-left absolute top-4 left-4 text-4xl text-slate-200"></i>
+                <p class="text-2xl italic text-slate-700 py-4 px-8 font-serif">
+                    “失败是常态，成功是偶然。<br>从失败中汲取的经验往往比奖状更珍贵。”
+                </p>
+                <i class="fas fa-quote-right absolute bottom-4 right-4 text-4xl text-slate-200"></i>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+                <div class="light-card text-left p-6">
+                    <strong class="text-accent text-lg block mb-2">真实分享</strong>
+                    <p class="text-sm text-slate-500">我曾有一个方案通宵调试后在现场失灵... 那次经历教会我“稳定性压倒一切”。</p>
+                </div>
+                <div class="light-card text-left p-6">
+                    <strong class="text-accent text-lg block mb-2">核心建议</strong>
+                    <p class="text-sm text-slate-500">注重过程收获。面试官更喜欢听你如何解决棘手BUG，而不是单纯炫耀奖项。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 20: 持续成长 -->
+        <section>
+            <h3 class="mb-10 text-slate-800">可持续成长：竞赛之外的收获</h3>
+            <div class="flex justify-center gap-16">
+                <div class="text-center w-64">
+                    <div class="w-40 h-40 rounded-full bg-white border-4 border-blue-500 flex flex-col items-center justify-center mx-auto mb-6 shadow-xl">
+                        <i class="fas fa-tools text-3xl mb-2 text-blue-500"></i>
+                        <span class="text-2xl font-bold text-blue-600">硬技能</span>
+                    </div>
+                    <ul class="text-lg text-slate-600 space-y-2 font-medium">
+                        <li>编程能力</li>
+                        <li>工程设计</li>
+                        <li>论文写作</li>
+                        <li>项目管理</li>
+                    </ul>
+                </div>
+                
+                <div class="h-64 w-px bg-slate-200 self-center"></div>
+
+                <div class="text-center w-64">
+                    <div class="w-40 h-40 rounded-full bg-white border-4 border-purple-500 flex flex-col items-center justify-center mx-auto mb-6 shadow-xl">
+                        <i class="fas fa-users text-3xl mb-2 text-purple-500"></i>
+                        <span class="text-2xl font-bold text-purple-600">软实力</span>
+                    </div>
+                    <ul class="text-lg text-slate-600 space-y-2 font-medium">
+                        <li>抗压能力</li>
+                        <li>公开演讲</li>
+                        <li>领导力</li>
+                        <li>人脉资源</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="mt-10 text-xl text-white font-bold bg-slate-800 inline-block px-8 py-2 rounded-full shadow-lg">这些能力，将使你终身受益。</p>
+        </section>
+
+        <!-- Slide 21: 总结 -->
+        <section>
+            <h2 class="text-accent mb-10">总结与寄语</h2>
+            <div class="grid grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+                <div class="light-card flex items-center p-6 bg-white hover:bg-slate-50">
+                    <i class="fas fa-map-marked-alt text-green-500 text-3xl mr-4"></i>
+                    <span class="text-xl text-slate-800">选择适合自己的赛道</span>
+                </div>
+                <div class="light-card flex items-center p-6 bg-white hover:bg-slate-50">
+                    <i class="fas fa-users text-blue-500 text-3xl mr-4"></i>
+                    <span class="text-xl text-slate-800">组建互补的梦幻团队</span>
+                </div>
+                <div class="light-card flex items-center p-6 bg-white hover:bg-slate-50">
+                    <i class="fas fa-chess text-yellow-500 text-3xl mr-4"></i>
+                    <span class="text-xl text-slate-800">用战略思维去备赛</span>
+                </div>
+                <div class="light-card flex items-center p-6 bg-white hover:bg-slate-50">
+                    <i class="fas fa-smile text-pink-500 text-3xl mr-4"></i>
+                    <span class="text-xl text-slate-800">享受过程，拥抱失败</span>
+                </div>
+            </div>
+            <p class="text-2xl text-slate-500 italic font-serif">“竞赛之路充满挑战，但也无比精彩。希望我的分享能帮助你勇敢地迈出第一步！”</p>
+        </section>
+
+        <!-- Slide 22: Q&A (深色底，作为结束前的视觉收束) -->
+        <section data-background-color="#1e293b">
+            <h1 class="text-8xl mb-6 text-white font-black">Q & A</h1>
+            <p class="text-3xl mb-12 text-sky-400">自由交流环节</p>
+            
+            <div class="light-card inline-block px-16 py-10 bg-white/10 backdrop-blur border-none">
+                <p class="mb-6 text-xl text-gray-300">如有后续问题，欢迎联系：</p>
+                <div class="text-4xl font-mono text-white mb-4">
+                    <i class="fab fa-weixin text-green-400 mr-3"></i> Li_Haolin_Competition
+                </div>
+                 <div class="text-2xl font-mono text-gray-400">
+                    <i class="fas fa-envelope text-gray-400 mr-3"></i> haolin.li@university.edu.cn
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 23: 结束页 -->
+        <section>
+            <div class="flex flex-col items-center justify-center h-full">
+                <h1 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 font-black text-9xl mb-12">
+                    感谢聆听
+                </h1>
+                <p class="text-3xl text-slate-500 tracking-wider">预祝各位在未来的竞赛中取得优异成绩！</p>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<!-- Reveal.js Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+
+<script>
+    // 初始化 Reveal
+    Reveal.initialize({
+        controls: true,       // 显示右下角控制箭头
+        progress: true,       // 显示底部进度条
+        center: true,         // 内容垂直居中
+        hash: false,          // 禁用 hash
+        transition: 'fade',   // 白底模式下，fade 渐变过渡通常比 slide 滑动更高级、不晕眩
+        
+        // 移动端配置
+        touch: true,
+        
+        // 确保不自动播放
+        autoPlayMedia: false, 
+    });
+</script>
+
+</body>
+</html>
